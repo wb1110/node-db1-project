@@ -9,7 +9,10 @@ SELECT * FROM orders
 WHERE orderid < 10258
 ORDER BY orderdate DESC;
 -- Find all customers that live in London, Madrid, or Brazil
-
+SELECT * FROM customers where 
+(Country like 'london') or
+(Country like 'madrid') or
+(Country like 'brazil');
 -- Add a customer record for "The Shire", the contact name is "Bilbo Baggins" the address is -"1 Hobbit-Hole" in "Bag End", postal code "111" and the country is "Middle Earth"
 
 -- Update Bilbo Baggins record so that the postal code changes to "11122"
