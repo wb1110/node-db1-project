@@ -21,7 +21,6 @@ router.post(
   md.checkAccountPayload,
   md.checkAccountNameUnique,
   async (req, res, next) => {
-    // DO YOUR MAGIC
     try {
       const newAccount = await Account.create(req.body)
       res.status(201).json(newAccount)
@@ -34,9 +33,9 @@ router.put(
   '/:id',
   md.checkAccountId,
   md.checkAccountPayload,
-  md.checkAccountNameUnique,
-  (req, res, next) => {
-  // DO YOUR MAGIC
+  async (req, res, next) => {
+    const updated = await Account.updateById(req.params.id, req.body)
+    res.json(updated)
   try {
     res.json('update account')
   } catch (err) {
@@ -54,7 +53,6 @@ router.delete('/:id', md.checkAccountId, async (req, res, next) => {
 })
 
 router.use((err, req, res, next) => { // eslint-disable-line
-  // DO YOUR MAGIC
   res.status(err.status || 500).json({
     message: err.message,
   })
